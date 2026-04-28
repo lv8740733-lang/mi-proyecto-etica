@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brújula Ética — Portafolio Digital HUM-010</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0d1f3c;
+    --blue:    #1a56db;
+    --accent:  #00b4d8;
+    --gold:    #00d4aa;
+    --gold-lt: #d0f5ee;
+    --bg:      #f4f7fc;
+    --white:   #ffffff;
+    --border:  #dde4f0;
+    --text:    #1f2937;
+    --muted:   #6b7280;
+    --cream:   #eef2fa;
+    --li-blue: #0a66c2;
+    --code:    #0ea5e9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── circuit bg pattern ── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,216,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,216,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,31,60,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0,180,216,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 7px 14px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: all 0.18s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+    background: rgba(0,180,216,0.1);
+    border-color: rgba(0,180,216,0.25);
+  }
+
+  .nav-links a.active {
+    color: var(--accent);
+    background: rgba(0,180,216,0.12);
+    border-color: rgba(0,180,216,0.35);
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .nav-share {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--li-blue);
+    color: white;
+    text-decoration: none;
+    padding: 7px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+  }
+  .nav-share:hover { opacity: 0.88; }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 96px 80px 72px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  section:nth-child(even) { background: rgba(238,242,250,0.85); }
+  section:nth-child(odd)  { background: rgba(244,247,252,0.85); }
+
+  /* ─── HERO ─── */
+  #inicio {
+    padding-top: 120px;
+    background: linear-gradient(135deg, #0d1f3c 0%, #0a2a4a 60%, #0b3353 100%) !important;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+
+  #inicio::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,216,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,216,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  #inicio::after {
+    content: "";
+    position: absolute;
+    top: -100px; right: -120px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,212,170,0.12);
+    border: 1px solid rgba(0,212,170,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1.0;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+
+  .hero-divider {
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-bottom: 32px;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  /* tag pills hero */
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(0,180,216,0.25);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+
+  .hero-tag:hover {
+    background: rgba(0,180,216,0.15);
+    border-color: rgba(0,180,216,0.5);
+    color: #fff;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 24px 28px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,180,216,0.15);
+    border-radius: 6px;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .hero-meta-val {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .hero-scroll {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .hero-scroll-line {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .sec-header { margin-bottom: 48px; }
+
+  .sec-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--code);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sec-tag::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--code);
+  }
+
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .sec-title em { font-style: italic; color: var(--blue); }
+
+  .sec-lead {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-top: 12px;
+  }
+
+  /* ─── EQUIPO ─── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .team-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(13,31,60,0.07);
+    transition: box-shadow 0.25s, transform 0.2s;
+  }
+
+  .team-card:hover {
+    box-shadow: 0 10px 32px rgba(13,31,60,0.14);
+    transform: translateY(-4px);
+  }
+
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #0d1f3c 0%, #1a3a6b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-photo-placeholder {
+    font-size: 3.5rem;
+    line-height: 1;
+  }
+
+  /* subtle circuit lines on card photo */
+  .team-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,216,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,216,0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .team-photo-label {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.3);
+    padding: 2px 7px;
+    border-radius: 2px;
+    z-index: 1;
+  }
+
+  .team-info {
+    padding: 18px 16px 14px;
+  }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+    line-height: 1.2;
+  }
+
+  .team-career {
+    font-size: 0.7rem;
+    color: var(--blue);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .team-bio {
+    font-size: 0.76rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .team-li {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #f0f5ff;
+    border: 1px solid #ccd9f0;
+    color: var(--li-blue);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 5px 11px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .team-li:hover { background: #dce9ff; }
+
+  /* ─── MANIFIESTO ─── */
+  .manifesto-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .manifesto-sidebar { position: sticky; top: 80px; }
+
+  .manifesto-values {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .value-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+    border-radius: 3px;
+  }
+
+  .value-rank {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--blue);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+
+  .value-name { font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+  .value-type { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .manifesto-content { }
+
+  .manifesto-metaphor {
+    background: linear-gradient(135deg, var(--navy) 0%, #0a2a4a 100%);
+    border: 1px solid rgba(0,180,216,0.25);
+    padding: 28px 28px 24px;
+    margin-bottom: 28px;
+    border-radius: 6px;
+  }
+
+  .manifesto-metaphor-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .manifesto-metaphor-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .manifesto-block { margin-bottom: 24px; }
+
+  .manifesto-block h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .manifesto-block h4::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .manifesto-block p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
+
+  .vuln-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  .vuln-tag {
+    background: #eef5ff;
+    border: 1px solid #c5d8f7;
+    color: var(--navy);
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 3px;
+  }
+
+  /* ─── PODCAST ─── */
+  .podcast-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .podcast-player {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(13,31,60,0.09);
+  }
+
+  .podcast-cover {
+    background: linear-gradient(135deg, var(--navy) 0%, #0c3060 100%);
+    padding: 36px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .podcast-cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,216,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,216,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .podcast-icon {
+    width: 68px; height: 68px;
+    background: rgba(0,180,216,0.15);
+    border: 1px solid rgba(0,180,216,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .podcast-cover-text { position: relative; z-index: 1; }
+
+  .podcast-ep {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .podcast-ep-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .podcast-controls { padding: 24px 28px; }
+
+  .podcast-embed-note {
+    background: var(--cream);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .podcast-embed-note strong { color: var(--navy); display: block; margin-bottom: 4px; }
+
+  .podcast-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .podcast-tag {
+    background: #eef5ff;
+    border: 1px solid #c5d8f7;
+    color: var(--navy);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .podcast-info { }
+
+  .podcast-dilema {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+  }
+
+  .podcast-dilema-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .podcast-dilema-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .theory-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .theory-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 4px;
+  }
+
+  .theory-card h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .theory-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+  /* ─── VIDEO-REACCIÓN ─── */
+  .video-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .video-frame {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(13,31,60,0.09);
+  }
+
+  .video-placeholder {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #0d1f3c 0%, #0a2a50 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,216,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,216,0.07) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .video-play {
+    width: 64px; height: 64px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(0,180,216,0.35);
+    position: relative;
+    z-index: 1;
+  }
+
+  .video-play:hover { background: var(--accent); transform: scale(1.06); }
+
+  .video-placeholder p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  .video-meta { padding: 20px 24px; border-top: 1px solid var(--border); }
+
+  .video-meta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .video-meta-sub { font-size: 0.76rem; color: var(--muted); }
+
+  .video-analysis { }
+
+  .analysis-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .analysis-item:last-child { border-bottom: none; }
+
+  .analysis-label {
+    font-size: 0.67rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--code);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .analysis-text { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+  /* ─── INFOGRAFÍA ─── */
+  .infografia-single {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 28px rgba(13,31,60,0.09);
+    max-width: 960px;
+  }
+
+  .infografia-single-header {
+    padding: 24px 36px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--navy);
+  }
+
+  .infografia-single-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .infografia-single-sub { font-size: 0.76rem; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+  .infografia-capas-label { display: flex; gap: 8px; }
+
+  .capa-pill {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .capa-pill-1 { background: rgba(0,180,216,0.2); color: var(--accent); border: 1px solid rgba(0,180,216,0.4); }
+  .capa-pill-2 { background: rgba(0,212,170,0.15); color: var(--gold); border: 1px solid rgba(0,212,170,0.4); }
+
+  .infografia-frame {
+    aspect-ratio: 16/7;
+    background: linear-gradient(135deg, #eef2fa 0%, #e4ecf8 50%, #eef5f0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .infografia-frame-icon { font-size: 3.5rem; }
+
+  .infografia-frame-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .infografia-layer-markers {
+    position: absolute;
+    top: 16px; left: 20px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .layer-marker {
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+
+  .lm-1 { background: rgba(0,180,216,0.15); color: #0099bb; border: 1px solid rgba(0,180,216,0.4); }
+  .lm-2 { background: rgba(0,212,170,0.12); color: #00917a; border: 1px solid rgba(0,212,170,0.35); }
+
+  .infografia-info { display: grid; grid-template-columns: 1fr 1fr; }
+
+  .infografia-info-col { padding: 22px 32px; }
+  .infografia-info-col:first-child { border-right: 1px solid var(--border); }
+
+  .info-col-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .info-col-label-1 { color: #0099bb; }
+  .info-col-label-2 { color: #00917a; }
+
+  .info-col-text { font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+
+  .compromiso-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .ct-1 { background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.3); color: #0099bb; }
+  .ct-2 { background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.3); color: #00917a; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: white;
+  }
+
+  .footer-brand span { color: var(--accent); }
+  .footer-meta { font-size: 0.74rem; letter-spacing: 0.06em; }
+
+  .footer-li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--li-blue);
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+  }
+  .footer-li:hover { opacity: 0.85; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner > * { animation: fadeUp 0.6s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.22s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.28s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.34s; }
+  .hero-inner > *:nth-child(6) { animation-delay: 0.40s; }
+  .hero-inner > *:nth-child(7) { animation-delay: 0.46s; }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">Brújula <span>Ética</span></div>
+    <div class="nav-sub">Portafolio Digital · HUM-010</div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('inicio', this)" class="active">Inicio</a></li>
+    <li><a onclick="goTo('equipo', this)">Equipo</a></li>
+    <li><a onclick="goTo('manifiesto', this)">Manifiesto</a></li>
+    <li><a onclick="goTo('podcast', this)">Podcast</a></li>
+    <li><a onclick="goTo('videoreaccion', this)">Video-reacción</a></li>
+    <li><a onclick="goTo('infografia', this)">Infografía</a></li>
+  </ul>
+  <a class="nav-share" href="https://www.linkedin.com/sharing/share-offsite/?url=TU_URL_AQUI" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    Compartir en LinkedIn
+  </a>
+</nav>
+
+<!-- ══════════════ INICIO ══════════════ -->
+<section id="inicio">
+  <div class="hero-inner">
+    <div class="hero-badge">⚡ Ética y Deontología Profesional · 2026-I</div>
+
+    <div class="hero-title">Brújula<br><em>Ética</em></div>
+    <div class="hero-subtitle">Portafolio Digital de Identidad Ética Profesional</div>
+
+    <div class="hero-divider"></div>
+
+    <p class="hero-desc">
+      Este portafolio documenta nuestro recorrido ético a lo largo del semestre: desde la construcción de nuestra identidad profesional hasta el compromiso con las generaciones futuras y el entorno. Cada sección refleja una etapa de ese proceso colectivo desde la perspectiva de la ingeniería de sistemas.
+    </p>
+
+    <div class="hero-tags">
+      <div class="hero-tag">⚙️ Ingeniería de Sistemas</div>
+      <div class="hero-tag">📊 Gestión Empresarial</div>
+      <div class="hero-tag">🔒 Ciberseguridad</div>
+      <div class="hero-tag">🤖 Inteligencia Artificial</div>
+      <div class="hero-tag">🧭 Ética Profesional</div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Curso</div>
+        <div class="hero-meta-val">Ética y Deontología Profesional</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Carrera</div>
+        <div class="hero-meta-val">Ingeniería Empresarial y Sistemas</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Semestre</div>
+        <div class="hero-meta-val">2026-I</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Docente</div>
+        <div class="hero-meta-val">Amparo Argüelles Romero</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Explorar el portafolio
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EQUIPO ══════════════ -->
+<section id="equipo">
+  <div class="sec-header">
+    <div class="sec-tag">Nuestro equipo</div>
+    <div class="sec-title">Quiénes <em>somos</em></div>
+    <div class="sec-lead">Cuatro estudiantes comprometidos con una práctica profesional íntegra, responsable y consciente de su impacto en la sociedad y la tecnología.</div>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- Oliver -->
+    <div class="team-card">
+      <div class="team-photo">
+        <div class="team-photo-placeholder">
+         <img src="oliver.jpeg" alt="Foto de Oliver Taipe" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    </div>
+        <div class="team-photo-label">Foto del estudiante</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Taipe Flores, Oliver Max</div>
+        <div class="team-career">Ing. Empresarial y Sistemas</div>
+        <div class="team-bio">Apasionado por los deportes, la música y la tecnología. Aporta visión tecnológica y entusiasmo por la innovación responsable.</div>
+        <a class="team-li" href="https://linkedin.com/in/usuario" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- Luis -->
+    <div class="team-card">
+      <div class="team-photo">
+        <div class="team-photo-placeholder">
+               <img src="LUIS.jpeg" alt="Karol" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+        </div>
+        <div class="team-photo-label">Foto del estudiante</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Valencia Bautista, Luis Alexander</div>
+        <div class="team-career">Ing. Económica y de Negocios</div>
+        <div class="team-bio">Interesado en el impacto de las decisiones económicas en personas y organizaciones. Aporta análisis responsable y compromiso ético.</div>
+        <a class="team-li" href="https://linkedin.com/in/usuario" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- Karol -->
+    <div class="team-card">
+      <div class="team-photo">
+        <div class="team-photo-placeholder">
+          <img src="KAROL.jpeg" alt="Karol" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+        </div>
+        <div class="team-photo-label">Foto del estudiante</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Quispe Geronimo, Karol Jimena</div>
+        <div class="team-career">Ing. Empresarial y de Sistemas</div>
+        <div class="team-bio">Apasionada por aprender y meterse de lleno en cada reto. Aporta organización, iniciativa y apoyo total al equipo.</div>
+        <a class="team-li" href="https://linkedin.com/in/usuario" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- Alessandro -->
+    <div class="team-card">
+      <div class="team-photo">
+        <div class="team-photo-placeholder">
+             <img src="ALESSANDRO.jpeg" alt="Karol" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+        </div>
+        <div class="team-photo-label">Foto del estudiante</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Atauco Mendoza, Alessandro Del Piero</div>
+        <div class="team-career">Ing. Empresarial y de Sistemas</div>
+        <div class="team-bio">Apasionado por los deportes y la tecnología. Enfocado en ciberseguridad e inteligencia artificial aplicada a las empresas.</div>
+        <a class="team-li" href="https://linkedin.com/in/usuario" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ MANIFIESTO ══════════════ -->
+<section id="manifiesto">
+  <div class="manifesto-layout">
+
+    <div class="manifesto-sidebar">
+      <div class="sec-tag">Módulo I · Semana 5</div>
+      <div class="sec-title">Manifiesto de<br><em>Identidad Ética</em></div>
+      <div class="sec-lead">Nuestra declaración de propósito profesional: quiénes somos, qué valores guían nuestro ejercicio y a quiénes nos comprometemos a proteger.</div>
+
+      <div class="manifesto-values">
+        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:16px;">Jerarquía de valores (Scheler)</div>
+        <div class="value-item">
+          <div class="value-rank">I</div>
+          <div><div class="value-name">Propiedad de datos y privacidad humana</div><div class="value-type">Valores Sagrados · Trascendencia</div></div>
+        </div>
+        <div class="value-item">
+          <div class="value-rank">II</div>
+          <div><div class="value-name">Transparencia Algorítmica</div><div class="value-type">Valores Espirituales · Ética y Justicia</div></div>
+        </div>
+        <div class="value-item">
+          <div class="value-rank">III</div>
+          <div><div class="value-name">Bienestar Organizacional y Ergonomía Digital</div><div class="value-type">Valores Vitales · Salud y Bienestar</div></div>
+        </div>
+        <div class="value-item">
+          <div class="value-rank">IV</div>
+          <div><div class="value-name">Eficiencia Empresarial y Gestión de Recursos</div><div class="value-type">Valores Económicos · Utilidad y Rentabilidad</div></div>
+        </div>
+        <img src="piramide.jpeg" style="width:100%; border-radius:6px; margin-top:14px; border:1px solid #dde4f0; display:block;">
+      </div>
+    </div>
+
+    <div class="manifesto-content">
+      <div class="manifesto-metaphor">
+        <div class="manifesto-metaphor-label">🔦 Nuestra metáfora artística · El Faro</div>
+        <div class="manifesto-metaphor-text">
+          "Elegimos el faro como nuestra metáfora artística porque simboliza la guía, la orientación y la responsabilidad ética en medio de la incertidumbre. En el mundo de la Ingeniería Empresarial y de Sistemas, donde los datos y la tecnología avanzan constantemente, el ingeniero debe actuar como esa luz firme que orienta los procesos hacia un puerto seguro. No se trata solo de construir sistemas eficientes, sino de asegurar que cada decisión tecnológica y empresarial esté iluminada por la ética para evitar impactos negativos y promover un desarrollo que sea realmente sostenible para la sociedad."
+        </div>
+         <img src="faro.png" style="width:100%; border-radius:6px; margin-top:18px; border:1px solid rgba(0,180,216,0.25); display:block; opacity:0.9;">
+      </div>
+
+      <div class="manifesto-block">
+        <h4>Propósito profesional</h4>
+        <p>Como futuros ingenieros, aspiramos a ser profesionales cuya <em style="color:var(--blue);font-style:italic;">areté</em> no se limite a la destreza técnica, sino que se manifieste en un hábito virtuoso al gestionar recursos y tecnología. Nuestro <em style="color:var(--blue);font-style:italic;">telos</em> es transformar las organizaciones mediante soluciones innovadoras que busquen siempre el bien común y el impacto social positivo. Entendemos que nuestra <em style="color:var(--blue);font-style:italic;">eudaimonía</em> se alcanza cuando logramos el éxito profesional a través del ejercicio responsable de nuestra carrera, contribuyendo al bienestar colectivo y asegurando que el conocimiento esté siempre al servicio de la integridad y el desarrollo humano.</p>
+      </div>
+
+      <div class="manifesto-block">
+        <h4>Poblaciones vulnerables que protegemos</h4>
+        <div class="vuln-tags">
+          <div class="vuln-tag">🏪 Microempresarios (pymes) sin digitalización</div>
+          <div class="vuln-tag">👴 Ciudadanos con baja alfabetización digital</div>
+          <div class="vuln-tag">📋 Excluidos por sesgos algorítmicos</div>
+          <div class="vuln-tag">🌄 Pobladores rurales sin internet estable</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+          <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:3px;padding:12px 14px;">
+            <div style="font-size:0.7rem;font-weight:700;color:var(--navy);margin-bottom:4px;">🏪 Microempresarios locales (pymes)</div>
+            <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Al diseñar sistemas de gestión para grandes empresas, se ignora a los pequeños negocios que no pueden competir por falta de herramientas tecnológicas accesibles.</div>
+          </div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:3px;padding:12px 14px;">
+            <div style="font-size:0.7rem;font-weight:700;color:var(--navy);margin-bottom:4px;">👴 Ciudadanos con baja alfabetización digital</div>
+            <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Si creamos plataformas o apps de servicios públicos muy complejas, excluimos a personas como adultos mayores que no saben usarlas, impidiéndoles acceder a sus derechos.</div>
+          </div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:3px;padding:12px 14px;">
+            <div style="font-size:0.7rem;font-weight:700;color:var(--navy);margin-bottom:4px;">📋 Postulantes o clientes excluidos por sesgos de algoritmos</div>
+            <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Si el software de evaluación tiene prejuicios invisibles, puede negar empleos o créditos a personas solo por su dirección o edad, perpetuando desigualdades estructurales.</div>
+          </div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:3px;padding:12px 14px;">
+            <div style="font-size:0.7rem;font-weight:700;color:var(--navy);margin-bottom:4px;">🌄 Pobladores de zonas rurales sin internet estable</div>
+            <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Si diseñamos modelos de negocio o servicios que solo funcionan online, dejamos desconectados a millones de peruanos, impidiéndoles acceder a educación, telemedicina o mercados.</div>
+          </div>
+           <img src="pobla.jpeg" style="width:100%; border-radius:6px; margin-top:14px; border:1px solid #dde4f0; display:block;">
+        </div>
+      </div>
+
+<div class="manifesto-block">
+  <h4>Mapa crítico profesional</h4>
+  <img src="mapacritico.jpeg" style="width:100%; border-radius:6px; margin-top:10px; border:1px solid #dde4f0;">
+</div>
+
+<!-- ══════════════ PODCAST ══════════════ -->
+<section id="podcast">
+  <div class="sec-header">
+    <div class="sec-tag">Módulo II · Semanas 6–7</div>
+    <div class="sec-title">Podcast de<br><em>Dilema Moral</em></div>
+    <div class="sec-lead">Un caso real del contexto peruano analizado desde dos marcos filosóficos contrapuestos: el deber kantiano y el utilitarismo de Mill.</div>
+  </div>
+
+  <div class="podcast-layout">
+    <div class="podcast-player">
+      <div class="podcast-cover">
+        <div class="podcast-icon">🎙️</div>
+        <div class="podcast-cover-text">
+          <div class="podcast-ep">Episodio 01 · Dilema ético profesional</div>
+          <div class="podcast-ep-title">[Título del episodio — describe el dilema en una frase]</div>
+        </div>
+      </div>
+      <div class="podcast-controls">
+        <div class="podcast-embed-note">
+          <strong>Insertar reproductor de audio aquí</strong>
+          Pega el código embed de Spotify, Anchor, Google Drive o el enlace directo al archivo de audio del podcast producido en las semanas 6–7.
+        </div>
+        <div class="podcast-tags">
+          <div class="podcast-tag">Kant · Ética del deber</div>
+          <div class="podcast-tag">Mill · Utilitarismo</div>
+          <div class="podcast-tag">🔒 Ciberseguridad</div>
+          <div class="podcast-tag">🤖 IA Empresarial</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="podcast-info">
+      <div class="podcast-dilema">
+        <div class="podcast-dilema-label">El dilema analizado</div>
+        <div class="podcast-dilema-text">"[Enuncia aquí el dilema ético real vinculado a sistemas o ingeniería empresarial que se discute en el podcast]"</div>
+      </div>
+
+      <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px;">Contraste teórico</div>
+      <div class="theory-compare">
+        <div class="theory-card">
+          <h5>Perspectiva kantiana</h5>
+          <p>Resume el argumento desde la ética del deber: ¿qué haría el ingeniero si actuara por principio universal, no por conveniencia técnica o económica?</p>
+        </div>
+        <div class="theory-card">
+          <h5>Perspectiva utilitarista</h5>
+          <p>Resume el argumento desde Mill: ¿qué decisión tecnológica produce el mayor bien para el mayor número de usuarios o personas afectadas?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ VIDEO-REACCIÓN ══════════════ -->
+<section id="videoreaccion">
+  <div class="sec-header">
+    <div class="sec-tag">Módulo III · Semana 12</div>
+    <div class="sec-title">Video-reacción<br><em>crítico</em></div>
+    <div class="sec-lead">Miramos nuestro propio podcast con ojos más maduros: ¿qué vacíos éticos identificamos? ¿Qué artículos del código deontológico deben humanizarse?</div>
+  </div>
+
+  <div class="video-layout">
+    <div class="video-frame">
+      <div class="video-placeholder">
+        <div class="video-play">▶</div>
+        <p>Insertar video aquí</p>
+      </div>
+      <div class="video-meta">
+        <div class="video-meta-title">[Título del video-reacción]</div>
+        <div class="video-meta-sub">Pega el embed de YouTube, Vimeo o Google Drive · Duración: 8–10 min</div>
+      </div>
+    </div>
+
+    <div class="video-analysis">
+      <div class="analysis-item">
+        <div class="analysis-label">Vacíos normativos identificados</div>
+        <div class="analysis-text">Describe las situaciones del dilema que los códigos deontológicos no contemplan adecuadamente. ¿Dónde falló la norma frente a la realidad de la ingeniería de sistemas?</div>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-label">Tensiones ético-legales</div>
+        <div class="analysis-text">Explica los conflictos entre la obligación legal y la conciencia moral del ingeniero. ¿Cuándo la regulación tecnológica no alcanza para guiar una decisión justa?</div>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-label">Propuesta de humanización</div>
+        <div class="analysis-text">Presenta los artículos o reformulaciones que reflejen una ética tecnológica más humanista y contextualizada al Perú. Fundaméntalas filosóficamente.</div>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-label">Reflexión sobre presión de decisión</div>
+        <div class="analysis-text">¿Cómo influye la presión institucional o del mercado tecnológico en las decisiones del ingeniero? Conecta con Weber (ética de la responsabilidad) y Levinas (alteridad).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ INFOGRAFÍA ══════════════ -->
+<section id="infografia">
+  <div class="sec-header">
+    <div class="sec-tag">Módulo IV · Semanas 13–15</div>
+    <div class="sec-title">Infografía de<br><em>Integridad y Sostenibilidad</em></div>
+    <div class="sec-lead">Una sola pieza visual con dos capas integradas: el cuidado del otro y la responsabilidad tecnológica con las generaciones futuras.</div>
+  </div>
+
+  <div class="infografia-single">
+
+    <div class="infografia-single-header">
+      <div>
+        <div class="infografia-single-title">Infografía de Integridad y Sostenibilidad</div>
+        <div class="infografia-single-sub">Ing. Empresarial y Sistemas · HUM-010 · 2026-I</div>
+      </div>
+      <div class="infografia-capas-label">
+        <div class="capa-pill capa-pill-1">Capa 1 · Cuidado</div>
+        <div class="capa-pill capa-pill-2">Capa 2 · Ambiente</div>
+      </div>
+    </div>
+
+    <div class="infografia-frame">
+      <div class="infografia-layer-markers">
+        <div class="layer-marker lm-1">Capa 1</div>
+        <div class="layer-marker lm-2">Capa 2</div>
+      </div>
+      <div class="infografia-frame-icon">🗺️</div>
+      <div class="infografia-frame-note">Insertar aquí la infografía interactiva (Genially o Canva embed)</div>
+    </div>
+
+    <div class="infografia-info">
+      <div class="infografia-info-col">
+        <div class="info-col-label info-col-label-1">⚙️ Capa 1 · Semana 13 · Ética del cuidado</div>
+        <div class="info-col-text">Esta capa representa la fotografía o pieza artística sobre la población vulnerable identificada y el compromiso ético de cuidado que asumimos como ingenieros en nuestro ejercicio profesional.</div>
+        <div class="compromiso-tag ct-1">Compromiso: [Redactar compromiso concreto de cuidado]</div>
+      </div>
+      <div class="infografia-info-col">
+        <div class="info-col-label info-col-label-2">🌱 Capa 2 · Semana 14 · Ecoética tecnológica</div>
+        <div class="info-col-text">Esta capa integra la imagen generada con IA que une la población vulnerable con el conflicto sociotecnológico, y plantea nuestro compromiso de responsabilidad con las generaciones futuras.</div>
+        <div class="compromiso-tag ct-2">Compromiso: [Redactar compromiso generacional concreto]</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="footer-brand">Brújula <span>Ética</span></div>
+    <div style="margin-top:6px;">Portafolio Digital · HUM-010 · Universidad Científica del Sur · 2026-I</div>
+  </div>
+  <div class="footer-meta">
+    Taipe · Valencia · Quispe · Atauco<br>
+    Docente: Amparo Argüelles Romero
+  </div>
+  <a class="footer-li" href="https://www.linkedin.com/sharing/share-offsite/?url=TU_URL_AQUI" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    Compartir portafolio
+  </a>
+</footer>
+
+<script>
+  function goTo(id, el) {
+    const target = document.getElementById(id);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  window.addEventListener('scroll', () => {
+    const ids = ['inicio','equipo','manifiesto','podcast','videoreaccion','infografia'];
+    const links = document.querySelectorAll('.nav-links a');
+    let current = 'inicio';
+    ids.forEach(id => {
+      const sec = document.getElementById(id);
+      if (sec && window.pageYOffset >= sec.offsetTop - 100) current = id;
+    });
+    links.forEach((a, i) => {
+      a.classList.toggle('active', ids[i] === current);
+    });
+  });
+</script>
+</body>
+</html>
